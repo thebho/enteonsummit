@@ -26,8 +26,6 @@ type ImageData struct {
             $scope.imageMap[Key].Key = newImageMap[Key].Key;
             $scope.imageMap[Key].Created = newImageMap[Key].Created;
             $scope.imageMap[Key].Size = newImageMap[Key].Size;
-
-
         }
       $scope.getRet = data;
     });
