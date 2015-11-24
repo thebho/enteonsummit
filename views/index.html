@@ -1,9 +1,42 @@
-<HTML>
+<!DOCTYPE html>
+
+<HTML ng-app="myApp">
   <HEAD>
-    <title>Task 06</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task 07</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script type="text/javascript" src="/static/js/lib/jquery.js" charset="UTF-8"></script>
+    <script src="/static/js/lib/angular.js"></script>
+    <script src="/static/js/lib/bootstrap.js"></script>
+    <script src="/static/js/lib/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="/static/js/app/index/index.js"></script>
   </HEAD>
-  <body>
-    <div><a href="/">Home</a>&nbsp;<a href="/page2">Page 2</a>&nbsp;<a href="/page3">Page 3</a></div>
-    <div>This is the home page</div>
+  <body ng-controller="IndexController">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/page2">Page 2</a>
+            </li>
+            <li>
+              <a href="/page3">Page 3</a>
+            </li>
+            <li>
+              <a href="/page4">Page 4</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" ng-view>
+      <label ng-show="showText">This is the home page</label><br>
+      <button class="btn" ng-click="showText=false;" ng-show="showText">Hide</button><button class="btn" ng-click="showText=true;" ng-show="!showText">Show</button>
+    </div>
   </body>
 </HTML>

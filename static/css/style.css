@@ -1,0 +1,150 @@
+html {
+	height: 100%;
+}
+body { 
+    padding-top: 65px;
+    height: 100%;
+}
+
+.table-fixed thead{
+ width: 97%;
+}
+.table-fixed tbody{
+  height: 230px;
+  overflow-y: auto;      
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0px;
+}
+
+.no-bottom-pad {
+  padding-bottom: 0px;
+}
+
+.no-pad {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+input.upper { 
+  text-transform: uppercase; 
+}
+
+.logbody {
+ 
+  background-color: #dddddd !important;
+  background: url(/static/images/logl2.png), url(/static/images/logl1.png);    
+}
+
+@media only screen and (max-width: 800px) {
+    
+    /* Force table to not be like tables anymore */
+	.mobile-table table, 
+	.mobile-table thead, 
+	.mobile-table tbody, 
+	.mobile-table th, 
+	.mobile-table td, 
+	.mobile-table tr { 
+		display: block; 
+	}
+ 
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.mobile-table thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+ 
+	.mobile-table tr { border: 1px solid #ccc; }
+ 
+	.mobile-table td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50% !important; 
+		white-space: normal !important;
+		text-align:left;
+	}
+ 
+	.mobile-table td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+	}
+ 
+	/*
+	Label the data
+	*/
+	.mobile-table td:before { content: attr(data-title); }
+}
+
+.bar-warn, .bar-crit{
+    position: absolute;
+	margin-top: -2px;
+	z-index: 1;
+	height: 25px;
+	width: 2px;
+	border-radius: 0px;	
+}
+
+.scroll-modal-body{
+  overflow-y: auto;
+}
+
+.progress {
+  height: 21px;
+}
+
+.progress .progress-bar {
+  font-size: 100%;
+  line-height: normal;
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: 1410px;
+  }
+}
+
+.growl-container.growl-fixed.top-right {
+  top: 75px;
+  right: 10px;
+}
+
+.panel-selected {
+  border-color: #2c3e50;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
