@@ -1,13 +1,13 @@
 package controllers
 
 import (
-  "github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 )
 
 type Page3Controller struct {
-  beego.Controller
+	beego.Controller
 }
 
 func (this *Page3Controller) Get() {
-  this.TplNames = "page3.html"
+	this.TplNames = "containers.html"
 }
