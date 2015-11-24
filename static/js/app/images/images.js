@@ -14,7 +14,7 @@ type ImageData struct {
   $scope.imageMap = {};
 
   $scope.getEcho = function() {
-    var imagesPromise = echoService.get($scope.organizationKey, $scope.tierKeys);
+    var imagesPromise = EchoService.get($scope.organizationKey, $scope.tierKeys);
     imagesPromise.then(function (data) {
       var ii, key, newImageMap;
       newImageMap = {};
