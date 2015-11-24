@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Task 07</title>
+    <title>Enteon NG Docker Manager</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <script type="text/javascript" src="/static/js/lib/jquery.js" charset="UTF-8"></script>
     <script src="/static/js/lib/angular.js"></script>
@@ -32,28 +32,42 @@
       </div>
     </div>
     <div class="container" ng-view>
-      <div class="col-xs-7 col-sm-6 col-md-5">
+      <div class="col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">GET</h4>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <input type="text" class="form-control input-sm" ng-model="getVal" /><button class="btn" ng-click="getEcho()">Get</button><br>
-              <input type="text" class="form-control input-sm" ng-model="getRet" />
-            </div>
+            <h4 class="panel-title">Docker Images</h4>
+            <div class="table-responsive mobile-table">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th class="text-center" ng-click="orderByField='Repo'; reverseSort = !reverseSort">Repo <span ng-show="orderByField=='Repo'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Key'; reverseSort = !reverseSort">ID <span ng-show="orderByField=='Key'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Created'; reverseSort = !reverseSort">Created <span ng-show="orderByField=='Created'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Size'; reverseSort = !reverseSort">Size <span ng-show="orderByField=='Size'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="image in imageMap | filter:search | MyInstancesFilter:currentUser:mineOnly | ActiveInstancesFilter:activeOnly | orderBy:orderByField:reverseSort as tableResults" >
+                    <td>
+                      <input ng-show="showCheckbox(instance);" type="checkbox" ng-model="instance.isSelected" ng-change="showActions();">
+                    </td>
+                    <td data-title="Repo" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Repo}}" tooltip-trigger="mouseenter">{{image.Repo}}</span>
+                    </td>
+                  </td>
+                  <td data-title="Key" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Key}}" tooltip-trigger="mouseenter">{{image.Key}}</span>
+                  </td>
+                </td>
+                <td data-title="Created" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Created}}" tooltip-trigger="mouseenter">{{image.Created}}</span>
+                </td>
+              </td>
+              <td data-title="Size" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Size}}" tooltip-trigger="mouseenter">{{image.Size}}</span>
+              </td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">POST</h4>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <input type="text" class="form-control input-sm" ng-model="postVal" /><button class="btn" ng-click="postEcho()">Post</button><br>
-              <input type="text" class="form-control input-sm" ng-model="postRet" />
-            </div>
-          </div>
         </div>
       </div>
     </div>

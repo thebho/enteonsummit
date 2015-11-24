@@ -3,14 +3,32 @@ myApp = angular.module('myApp', []);
 
 myApp.controller("IndexController", function($scope, EchoService) {
 
-  $scope.getVal = "";
-  $scope.getRet = "";
-  $scope.postVal = "";
-  $scope.postRet = "";
+/*
+type ImageData struct {
+  Repo string
+  Key string
+  Created string
+  Size string
+}*/
+
+  $scope.imageMap = {};
 
   $scope.getEcho = function() {
-    var promise = EchoService.get($scope.getVal);
-    promise.then(function(data){
+    var imagesPromise = echoService.get($scope.organizationKey, $scope.tierKeys);
+    imagesPromise.then(function (data) {
+      var ii, key, newImageMap;
+      newImageMap = {};
+      for (ii = 0; ii < data.length; ii++) {
+        newImageMap[data[ii].ID] = data[ii];
+      }
+      for (key in newImageMap) {
+            $scope.imageMap[Key].Repo = newImageMap[Key].Repo;
+            $scope.imageMap[Key].Key = newImageMap[Key].Key;
+            $scope.imageMap[Key].Created = newImageMap[Key].Created;
+            $scope.imageMap[Key].Size = newImageMap[Key].Size;
+
+
+        }
       $scope.getRet = data;
     });
   };

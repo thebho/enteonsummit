@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Task 07</title>
+    <title>Enteon NG Docker Manager</title>
     <link rel="stylesheet" href="/static/css/styles.css">
     <script type="text/javascript" src="/static/js/lib/jquery.js" charset="UTF-8"></script>
     <script src="/static/js/lib/angular.js"></script>
@@ -32,8 +32,9 @@
       </div>
     </div>
     <div class="container" ng-view>
-      <label ng-show="showText">This is the home page</label><br>
-      <button class="btn" ng-click="showText=false;" ng-show="showText">Hide</button><button class="btn" ng-click="showText=true;" ng-show="!showText">Show</button>
+      <a class="">
+        <img class="img-responsive hidden-md" src="/static/images/dockerimage.png">
+      </a>
     </div>
   </body>
 </HTML>
