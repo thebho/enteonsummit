@@ -2,19 +2,19 @@
 myApp = angular.module('myApp', []);
 
 myApp.controller("IndexController", function($scope, EchoService) {
-  
+
   $scope.getVal = "";
   $scope.getRet = "";
   $scope.postVal = "";
   $scope.postRet = "";
-  
+
   $scope.getEcho = function() {
     var promise = EchoService.get($scope.getVal);
     promise.then(function(data){
       $scope.getRet = data;
     });
   };
-  
+
   $scope.postEcho = function() {
     var promise = EchoService.post($scope.postVal);
     promise.then(function(data){
@@ -33,7 +33,7 @@ myApp.factory("EchoService", function($http, $q) {
       });
     return getData.promise;
   };
-  
+
   echoService.post = function(val) {
     var postData = $q.defer(), valstruct = {};
     valstruct.Val = val;
@@ -43,6 +43,6 @@ myApp.factory("EchoService", function($http, $q) {
       });
     return postData.promise;
   };
-  
+
   return echoService;
 });

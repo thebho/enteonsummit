@@ -1,14 +1,14 @@
 package controllers
 
 import (
-  "github.com/astaxie/beego"
+	"github.com/astaxie/beego"
 )
 
 type Page2Controller struct {
-  beego.Controller
+	beego.Controller
 }
 
 func (this *Page2Controller) Get() {
-  this.Data["names"] = []string{"Bob","Mary"}
-  this.TplNames = "page2.html"
+	this.Data["names"] = []string{"Bob", "Mary"}
+	this.TplNames = "images.html"
 }
