@@ -14,14 +14,16 @@ type ImageData struct {
   $scope.imageMap = {};
 
   $scope.getEcho = function() {
-    var imagesPromise = EchoService.get($scope.organizationKey, $scope.tierKeys);
+    var imagesPromise = EchoService.get();
     imagesPromise.then(function (data) {
+      console.log(data)
       var ii, key, newImageMap;
       newImageMap = {};
       for (ii = 0; ii < data.length; ii++) {
-        newImageMap[data[ii].ID] = data[ii];
+        newImageMap[data[ii].Key] = data[ii];
       }
-      for (key in newImageMap) {
+      console.log(newImageMap)
+      for (Key in newImageMap) {
             $scope.imageMap[Key].Repo = newImageMap[Key].Repo;
             $scope.imageMap[Key].Key = newImageMap[Key].Key;
             $scope.imageMap[Key].Created = newImageMap[Key].Created;
@@ -41,11 +43,13 @@ type ImageData struct {
 
 myApp.factory("EchoService", function($http, $q) {
   var echoService = {};
-  echoService.get = function(val) {
+  echoService.get = function() {
     var getData = $q.defer();
-    $http.get('/rest/echo/' + val)
+    $http.get('/rest/dockerimages/')
       .success(function (data) {
-        getData.resolve(data.Val);
+        console.log(data);
+
+        getData.resolve(data);
       });
     return getData.promise;
   };
@@ -53,6 +57,7 @@ myApp.factory("EchoService", function($http, $q) {
   echoService.post = function(val) {
     var postData = $q.defer(), valstruct = {};
     valstruct.Val = val;
+
     $http.post('/rest/echo/', valstruct)
       .success(function (data) {
         postData.resolve(data.Val);

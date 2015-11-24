@@ -18,20 +18,40 @@ type DockerImageRest struct {
 
 //Get ...
 func (This *DockerImageRest) Get() {
+	fmt.Println("Running Get()")
+	This.Data["json"] = `[
+  {
+    "Repo": "java:latest",
+    "Key": "cb2addcbc5f44c2abe3aeda527c41d0b3c9793ca0d51795c852bb9e62414600d",
+    "Created": "1448008512",
+    "Size": "413134"
+  },
+  {
+    "Repo": "docker-repo.gonkulator.io/devinfra:latest",
+    "Key": "1c20ff30c7632d4a0923763d97656a22682ff92a31c4318ce551e4ac328f80ab",
+    "Created": "1447712050",
+    "Size": "0"
+  },
+  {
+    "Repo": "ubuntu:latest",
+    "Key": "e9ae3c220b23b699cb5e6914af806219b028c78d5cf6fed8eeca98ffaa8c9b43",
+    "Created": "1447115707",
+    "Size": "0"
+  },
+  {
+    "Repo": "busybox:latest",
+    "Key": "c51f86c283408d1749d066333f7acd5d33b053b003a61ff6a7b36819ddcbc7b7",
+    "Created": "1446330175",
+    "Size": "0"
+  },
+  {
+    "Repo": "alpine:latest",
+    "Key": "8a648f689ddb6408f71f7a41025b56583f5a9a0c5fb6df105d97c8e0ea139910",
+    "Created": "1442260874",
+    "Size": "5248903"
+  }
+]`
 
-	command := This.Ctx.Input.Params[":command"]
-	value := This.Ctx.Input.Params[":value"]
-	fmt.Printf("Value was %v\n", value)
-	switch command {
-	case "delete":
-		This.Data = deleteImage(value, This)
-	case "pull":
-		This.Data = pullImage(value, This)
-	case "list":
-		This.Data = listImages(This)
-	default:
-		This.CustomAbort(501, "\""+command+"\" is not implemented!")
-	}
 	This.ServeFormatted()
 }
 
