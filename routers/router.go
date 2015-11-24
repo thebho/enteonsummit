@@ -12,7 +12,6 @@ func init() {
 	beego.Router("/rest/echo/:val", &rest.EchoController{})
 	beego.Router("/rest/echo", &rest.EchoController{})
 	beego.Router("/rest/echo3", &rest.EchoController3{})
-	beego.Router("/rest/echo4", &rest.EchoController4{})
 	beego.Router("/page3", &controllers.Page3Controller{})
 	beego.Router("/page2", &controllers.Page2Controller{})
 
