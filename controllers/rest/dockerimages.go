@@ -20,8 +20,10 @@ func (This *DockerImageRest) Get() {
 	case "pull":
 		pullImage(value)
 
+	default:
+		This.Data["json"] = "tobeimplemented"
+
 	}
-	This.Data["json"] = "tobeimplemented"
 	This.ServeFormatted()
 }
 
@@ -31,4 +33,9 @@ func deleteImage(image string) {
 
 func pullImage(image string) {
 
+}
+
+func inspectImage(image string) (Data map[interface{}]interface{}) {
+
+	return
 }

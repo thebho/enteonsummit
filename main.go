@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "enteonsummit/routers"
 	"os"
 	"path"
 
