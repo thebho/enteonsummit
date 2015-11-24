@@ -9,6 +9,9 @@ import (
 
 func init() {
 	beego.Router("/rest/docker/image/:command/:value", &rest.DockerImageRest{})
+	beego.Router("/rest/docker/image/:command/", &rest.DockerImageRest{})
+	beego.Router("/rest/docker/container/:command/:value", &rest.DockerContainerRest{})
+	beego.Router("/rest/docker/container/:command/", &rest.DockerContainerRest{})
 	beego.Router("/rest/echo/:val", &rest.EchoController{})
 	beego.Router("/rest/dockerimages", &rest.DockerImageRest{})
 	beego.Router("/rest/echo3", &rest.EchoController3{})
