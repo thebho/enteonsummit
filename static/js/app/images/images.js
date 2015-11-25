@@ -16,19 +16,20 @@ type ImageData struct {
   $scope.getEcho = function() {
     var imagesPromise = EchoService.get();
     imagesPromise.then(function (data) {
-      console.log(data)
+      console.log("Promise Data: " + data)
       var ii, key, newImageMap;
-      newImageMap = {};
+      var newImageMap = {};
       for (ii = 0; ii < data.length; ii++) {
         newImageMap[data[ii].Key] = data[ii];
       }
-      console.log(newImageMap)
-      for (Key in newImageMap) {
+      for (Key in $scope.newImageMap) {
+        $scope.imageMap[Key] = {};
             $scope.imageMap[Key].Repo = newImageMap[Key].Repo;
             $scope.imageMap[Key].Key = newImageMap[Key].Key;
             $scope.imageMap[Key].Created = newImageMap[Key].Created;
             $scope.imageMap[Key].Size = newImageMap[Key].Size;
         }
+        console.log($scope.imageMap)
       $scope.getRet = data;
     });
   };

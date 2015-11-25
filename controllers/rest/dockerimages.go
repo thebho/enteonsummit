@@ -1,6 +1,7 @@
 package rest
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/astaxie/beego"
@@ -19,7 +20,8 @@ type DockerImageRest struct {
 //Get ...
 func (This *DockerImageRest) Get() {
 	fmt.Println("Running Get()")
-	This.Data["json"] = `[
+	data := []byte(`
+		[
   {
     "Repo": "java:latest",
     "Key": "cb2addcbc5f44c2abe3aeda527c41d0b3c9793ca0d51795c852bb9e62414600d",
@@ -50,7 +52,11 @@ func (This *DockerImageRest) Get() {
     "Created": "1442260874",
     "Size": "5248903"
   }
-]`
+	]
+	`)
+	var images []ImageData
+	json.Unmarshal(data, &images)
+	This.Data["json"] = images
 
 	This.ServeFormatted()
 }

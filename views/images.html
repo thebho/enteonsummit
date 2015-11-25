@@ -74,5 +74,10 @@
         <button class="btn btn-primary btn-sm" ng-click="getEcho();"><span class="glyphicon glyphicon-plus"></span> Pull Images</button>
       </div>
     </div>
+    <div>
+      <li ng-repeat="image in imageMap">
+        {{image.Repo}}  {{image.Key}}
+        <li>
+    </div>
   </body>
 </HTML>
