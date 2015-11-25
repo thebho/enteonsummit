@@ -40,29 +40,23 @@
               <table class="table table-hover table-striped">
                 <thead>
                   <tr>
-                    <th class="text-center" ng-click="orderByField='Repo'; reverseSort = !reverseSort">Repo <span ng-show="orderByField=='Repo'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
-                    <th class="text-center" ng-click="orderByField='Key'; reverseSort = !reverseSort">ID <span ng-show="orderByField=='Key'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
-                    <th class="text-center" ng-click="orderByField='Created'; reverseSort = !reverseSort">Created <span ng-show="orderByField=='Created'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
-                    <th class="text-center" ng-click="orderByField='Size'; reverseSort = !reverseSort">Size <span ng-show="orderByField=='Size'"><span ng-show="!reverseSort" class="glyphicon glyphicon-sort-by-attributes"></span><span ng-show="reverseSort" class="glyphicon glyphicon-sort-by-attributes-alt"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Repo'; reverseSort = !reverseSort">Repo <span ng-show="orderByField=='Repo'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Key'; reverseSort = !reverseSort">ID <span ng-show="orderByField=='Key'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Created'; reverseSort = !reverseSort">Created <span ng-show="orderByField=='Created'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span></th>
+                    <th class="text-center" ng-click="orderByField='Size'; reverseSort = !reverseSort">Size <span ng-show="orderByField=='Size'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span></th>
 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="image in imageMap | filter:search | MyInstancesFilter:currentUser:mineOnly | ActiveInstancesFilter:activeOnly | orderBy:orderByField:reverseSort as tableResults" >
+                  <tr ng-repeat="image in imageMap " >
                     <td>
                       <input ng-show="showCheckbox(instance);" type="checkbox" ng-model="instance.isSelected" ng-change="showActions();">
                     </td>
-                    <td data-title="Repo" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Repo}}" tooltip-trigger="mouseenter">{{image.Repo}}</span>
+                    <td data-title="Repo" class="text-center"><span tooltip="{{image.Repo}}" tooltip-trigger="mouseenter">{{image.Repo}}</span>
+                    <td data-title="Key" class="text-center"><span tooltip="{{image.Key}}" tooltip-trigger="mouseenter">{{image.Key}}</span>
+                    <td data-title="Created" class="text-center"><span tooltip="{{image.Created}}" tooltip-trigger="mouseenter">{{image.Created}}</span>
+                    <td data-title="Size" class="text-center"><span tooltip="{{image.Size}}" tooltip-trigger="mouseenter">{{image.Size}}</span>
                     </td>
-                  </td>
-                  <td data-title="Key" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Key}}" tooltip-trigger="mouseenter">{{image.Key}}</span>
-                  </td>
-                </td>
-                <td data-title="Created" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Created}}" tooltip-trigger="mouseenter">{{image.Created}}</span>
-                </td>
-              </td>
-              <td data-title="Size" class="text-center"><span ng-class="instance.Description == '' ? '' : 'btn-link'" tooltip="{{image.Size}}" tooltip-trigger="mouseenter">{{image.Size}}</span>
-              </td>
                   </tr>
                 </tbody>
               </table>
@@ -73,11 +67,6 @@
       <div class="panel-body">
         <button class="btn btn-primary btn-sm" ng-click="getEcho();"><span class="glyphicon glyphicon-plus"></span> Pull Images</button>
       </div>
-    </div>
-    <div>
-      <li ng-repeat="image in imageMap">
-        {{image.Repo}}  {{image.Key}}
-        <li>
     </div>
   </body>
 </HTML>

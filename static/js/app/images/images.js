@@ -16,20 +16,18 @@ type ImageData struct {
   $scope.getEcho = function() {
     var imagesPromise = EchoService.get();
     imagesPromise.then(function (data) {
-      console.log("Promise Data: " + data)
       var ii, key, newImageMap;
       var newImageMap = {};
       for (ii = 0; ii < data.length; ii++) {
         newImageMap[data[ii].Key] = data[ii];
       }
-      for (Key in $scope.newImageMap) {
+      for (Key in newImageMap) {
         $scope.imageMap[Key] = {};
             $scope.imageMap[Key].Repo = newImageMap[Key].Repo;
             $scope.imageMap[Key].Key = newImageMap[Key].Key;
             $scope.imageMap[Key].Created = newImageMap[Key].Created;
             $scope.imageMap[Key].Size = newImageMap[Key].Size;
         }
-        console.log($scope.imageMap)
       $scope.getRet = data;
     });
   };
@@ -48,7 +46,6 @@ myApp.factory("EchoService", function($http, $q) {
     var getData = $q.defer();
     $http.get('/rest/dockerimages/')
       .success(function (data) {
-        console.log(data);
 
         getData.resolve(data);
       });
