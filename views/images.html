@@ -37,7 +37,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">Docker Images</h4>
             <div class="table-responsive mobile-table">
-              <table class="table table-hover table-striped">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th class="text-center" ng-click="orderByField='Repo'; reverseSort = !reverseSort">Repo <span ng-show="orderByField=='Repo'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span></th>
@@ -49,9 +49,6 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="image in imageMap " >
-                    <td>
-                      <input ng-show="showCheckbox(instance);" type="checkbox" ng-model="instance.isSelected" ng-change="showActions();">
-                    </td>
                     <td data-title="Repo" class="text-center"><span tooltip="{{image.Repo}}" tooltip-trigger="mouseenter">{{image.Repo}}</span>
                     <td data-title="Key" class="text-center"><span tooltip="{{image.Key}}" tooltip-trigger="mouseenter">{{image.Key}}</span>
                     <td data-title="Created" class="text-center"><span tooltip="{{image.Created}}" tooltip-trigger="mouseenter">{{image.Created}}</span>
